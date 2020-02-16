@@ -49,8 +49,8 @@ while(continuar){
     switch(movimiento){
         case "ARRIBA":
             if(viboritaI === 0 && tablero[5][viboritaJ]!==ladrillo){
-                tablero[0][viboritaJ]===tablero[5][viboritaJ];
-                tablero[5][viboritaJ]===viborita;
+                tablero[0][viboritaJ]=tablero[5][viboritaJ];
+                tablero[5][viboritaJ]=viborita;
                 } else if(tablero[viboritaI-1][viboritaJ]===manzana){
                     manzanas--;
                     tablero[viboritaI][viboritaJ]= '💩';
@@ -64,8 +64,8 @@ while(continuar){
         break;
         case "DERECHA":
             if(viboritaJ===4 && tablero[viboritaI][0] !== ladrillo){
-                            tablero[viboritaI][4]===tablero[viboritaI][0];
-                            tablero[viboritaI][4]===viborita;
+                            tablero[viboritaI][4]=tablero[viboritaI][0];
+                            tablero[viboritaI][0]=viborita;
                         } 
                          else if(tablero[viboritaI][viboritaJ+1]===manzana){
                             manzanas--;
@@ -81,8 +81,8 @@ while(continuar){
         case "ABAJO":
             
                         if(viboritaI===5 && tablero[0][viboritaJ]!==ladrillo){
-                            tablero[5][viboritaJ]===tablero[0][viboritaJ];
-                            tablero[0][viboritaJ]===viborita;
+                            tablero[5][viboritaJ]=tablero[0][viboritaJ];
+                            tablero[0][viboritaJ]=viborita;
                         } else if(tablero[viboritaI+1][viboritaJ]===manzana){
                             manzanas--;
                             tablero[viboritaI][viboritaJ]= '💩';
@@ -96,8 +96,8 @@ while(continuar){
         case "IZQUIERDA":
                 
                         if(viboritaJ===0 && tablero[viboritaI][4]!==ladrillo){
-                            tablero[viboritaI][0]===tablero[viboritaI][4];
-                            tablero[viboritaI][4]===viborita;
+                            tablero[viboritaI][0]=tablero[viboritaI][4];
+                            tablero[viboritaI][4]=viborita;
                         } else if(tablero[viboritaI][viboritaJ-1]===manzana){
                             manzanas--;
                             tablero[viboritaI][viboritaJ]= '💩';
@@ -114,10 +114,11 @@ while(continuar){
         default:
             alert("No ha ingresado un movimiento valido");
             
-        if(manzanas === 0){
+        
+    }
+    if(manzanas === 0){
         continuar = false;
         alert("GANOOOOOOOOOO");        
         mostrarMensaje();
-    }
     }
 }
