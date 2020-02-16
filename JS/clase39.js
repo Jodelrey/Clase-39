@@ -25,6 +25,7 @@ for(let i = 0; i<comestibles.length; i++){
     mensaje += comestibles[i][0] + '\n' +'--------' + '\n' 
     for(let j = 1; j<comestibles[i].length; j++){
         console.log(comestibles[i][j]);
+        mensaje += comestibles[i][j] + '\n';
     }
     mensaje +='---------' + '\n'
 }
