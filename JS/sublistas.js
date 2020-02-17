@@ -31,37 +31,37 @@ let mensaje = '';
 let continuar = true;
 let vueltas = 0;
 
-let mostrarMensaje = function(){
+let mostrarMensaje = function () {
 
-for(let i = 0; i<listas.length; i++){
-    mensaje += listas[i][0] + '\n' +'--------' + '\n' 
-    for(let j = 1; j<listas[i].length; j++){
-        mensaje += listas[i][j]+ "\n";
-    }
-    mensaje += '\n'
-}
-alert(mensaje);
+	for (let i = 0; i < listas.length; i++) {
+		mensaje += listas[i][0] + '\n' + '--------' + '\n'
+		for (let j = 1; j < listas[i].length; j++) {
+			mensaje += listas[i][j] + "\n";
+		}
+		mensaje += '\n'
+	}
+	alert(mensaje);
 }
 
-while(continuar){
-    listas[vueltas] = prompt("Ingrese el nombre de una categoria").split(' ');
-    listas[vueltas].push('👉' + ' ' + prompt("Ingrese una tarea a la lista"));
-    agregarTarea = true;
-    while(agregarTarea){
-        agregarOtraTarea = confirm("Desea agregar otra tarea a la lista?");
-        if(agregarOtraTarea){
-            listas[vueltas].push('👉' + ' ' + prompt("Ingrese otra tarea a la lista"));
-        } else{
-            agregarTarea = false;
-        }
-    }
-    vueltas++;
-    agregarCategoria = confirm("Desea agregar otra categoria?");
-    if(agregarCategoria){
-        continuar = true;
-    } else{
-        continuar = false;
-    }
+while (continuar) {
+	listas[vueltas] = prompt("Ingrese el nombre de una categoria").split(' ');
+	listas[vueltas].push('👉' + ' ' + prompt("Ingrese una tarea a la lista"));
+	agregarTarea = true;
+	while (agregarTarea) {
+		agregarOtraTarea = confirm("Desea agregar otra tarea a la lista?");
+		if (agregarOtraTarea) {
+			listas[vueltas].push('👉' + ' ' + prompt("Ingrese otra tarea a la lista"));
+		} else {
+			agregarTarea = false;
+		}
+	}
+	vueltas++;
+	agregarCategoria = confirm("Desea agregar otra categoria?");
+	if (agregarCategoria) {
+		continuar = true;
+	} else {
+		continuar = false;
+	}
 }
 
 mostrarMensaje();
