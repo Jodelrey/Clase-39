@@ -30,6 +30,9 @@ let mostrarMensaje = function(){
     }
     alert(mensaje);
 }
+let mensajeLadrillo = function(){
+    alert(`No puede realizar ese movimiento, se va a dar la cabeza contra ${ladrillo}`);
+}
 let viboritaI= 0;
 let viboritaJ = 0;
 
@@ -51,6 +54,8 @@ while(continuar){
             if(viboritaI === 0 && tablero[5][viboritaJ]!==ladrillo){
                 tablero[0][viboritaJ]=tablero[5][viboritaJ];
                 tablero[5][viboritaJ]=viborita;
+                } else if (viboritaI === 0 && tablero[5][viboritaJ]===ladrillo){
+                    mensajeLadrillo();
                 } else if(tablero[viboritaI-1][viboritaJ]===manzana){
                     manzanas--;
                     tablero[viboritaI][viboritaJ]= '💩';
@@ -58,7 +63,9 @@ while(continuar){
                 } else if(tablero[viboritaI-1][viboritaJ]!==ladrillo){
                     tablero[viboritaI][viboritaJ]=tablero[viboritaI-1][viboritaJ];
                     tablero[viboritaI-1][viboritaJ] = viborita;
-                } 
+                } else if (tablero[viboritaI-1][viboritaJ]===ladrillo){
+                    mensajeLadrillo();
+                }
                  
             
         break;
@@ -66,14 +73,17 @@ while(continuar){
             if(viboritaJ===4 && tablero[viboritaI][0] !== ladrillo){
                             tablero[viboritaI][4]=tablero[viboritaI][0];
                             tablero[viboritaI][0]=viborita;
-                        } 
-                         else if(tablero[viboritaI][viboritaJ+1]===manzana){
+                        } else if(viboritaJ===4 && tablero[viboritaI][0] === ladrillo){
+                            mensajeLadrillo();
+                        } else if(tablero[viboritaI][viboritaJ+1]===manzana){
                             manzanas--;
                             tablero[viboritaI][viboritaJ]= '💩';
                              tablero[viboritaI][viboritaJ+1] = viborita;
                         }else if(tablero[viboritaI][viboritaJ+1]!==ladrillo){
                             tablero[viboritaI][viboritaJ]=tablero[viboritaI][viboritaJ+1];
                             tablero[viboritaI][viboritaJ+1] = viborita;
+                        } else if(tablero[viboritaI][viboritaJ+1]===ladrillo){
+                            mensajeLadrillo();
                         }
              
             
@@ -83,14 +93,19 @@ while(continuar){
                         if(viboritaI===5 && tablero[0][viboritaJ]!==ladrillo){
                             tablero[5][viboritaJ]=tablero[0][viboritaJ];
                             tablero[0][viboritaJ]=viborita;
-                        } else if(tablero[viboritaI+1][viboritaJ]===manzana){
+                        } else if (viboritaI===5 && tablero[0][viboritaJ]===ladrillo){
+                            mensajeLadrillo();
+                        }
+                        else if(tablero[viboritaI+1][viboritaJ]===manzana){
                             manzanas--;
                             tablero[viboritaI][viboritaJ]= '💩';
                             tablero[viboritaI+1][viboritaJ] = viborita;
                         } else if(tablero[viboritaI+1][viboritaJ]!==ladrillo){
                             tablero[viboritaI][viboritaJ]=tablero[viboritaI+1][viboritaJ];
                             tablero[viboritaI+1][viboritaJ] = viborita;
-                        } 
+                        }  else if(tablero[viboritaI+1][viboritaJ]===ladrillo){
+                            mensajeLadrillo();
+                        }
          
         break;
         case "IZQUIERDA":
@@ -98,13 +113,18 @@ while(continuar){
                         if(viboritaJ===0 && tablero[viboritaI][4]!==ladrillo){
                             tablero[viboritaI][0]=tablero[viboritaI][4];
                             tablero[viboritaI][4]=viborita;
-                        } else if(tablero[viboritaI][viboritaJ-1]===manzana){
+                        } else if (viboritaJ===0 && tablero[viboritaI][4]!==ladrillo) {
+                            mensajeLadrillo();
+                        }
+                        else if(tablero[viboritaI][viboritaJ-1]===manzana){
                             manzanas--;
                             tablero[viboritaI][viboritaJ]= '💩';
                             tablero[viboritaI][viboritaJ-1] = viborita;
-                    }else if(tablero[viboritaI][viboritaJ-1]!==ladrillo){
+                       } else if(tablero[viboritaI][viboritaJ-1]!==ladrillo){
                         tablero[viboritaI][viboritaJ]= tablero[viboritaI][viboritaJ-1];
                         tablero[viboritaI][viboritaJ-1] = viborita;
+                } else if(tablero[viboritaI][viboritaJ-1]===ladrillo){
+                    mensajeLadrillo();
                 }
                 
       

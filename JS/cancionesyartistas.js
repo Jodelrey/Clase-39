@@ -7,12 +7,14 @@
 let listas = [];
 let continuar = true;
 let mensaje = ' ';
-
+let agregarCancion =[];
 while(continuar){
     let accion = prompt("Que accion desea realizar: Agregar cancion, Buscar canciones, Listar artistas o Salir");
     switch(accion){
         case "Agregar cancion":
-            agregarCancion = prompt("Ingrese nombre de cancion y artista, separados por coma").split(',');
+            agregarCancion.push(prompt("Ingrese nombre de cancion y artista, separados por coma"));
+            agregarCancion[0].split(' , ');
+            console.log(agregarCancion);
             for(i = 0; i<listas.length; i++){
                 for(j = 0; j<listas[i].length; j++){
                     if(agregarCancion[1]===listas[i][0]){
@@ -22,6 +24,8 @@ while(continuar){
                     }
                 }
             }
+            agregarCancion= [];
+            console.log(listas);
             break;
         case "Buscar canciones":
             artista = prompt("Ingrese el nombre del artista sobre el cual desea obtener el listado de canciones");
