@@ -8,6 +8,20 @@ let datosUsuarios = [
 let vueltas = 4;
 let usuario = [];
 let continuar = true;
+let idEncontrado = "id inexistente"
+const buscarPorId = (id) => {
+	for (let i = 0; i < datosUsuarios.length; i++) {
+		for (let j = 0; j < datosUsuarios[i].length; j++) {
+			if(datosUsuarios[i][0] === id){
+				idEncontrado = "encontrado";
+			}
+			
+		}
+		
+	}
+
+} 
+
 while (continuar) {
 	const menu = prompt(`Seleccione la accion que desea realizar: \n - Crear un usuario \n - Buscar un usuario \n - Listar usuarios \n - Modificar un usuario \n - Eliminar un usuario \n - Salir`);
 	switch (menu) {
@@ -39,12 +53,14 @@ while (continuar) {
 				let dato = prompt(`Con que dato desea buscar al usuario: \n-ID \n-Nombre \n-Celular \n-Email`);
 				if (dato === "ID") {
 					id = Number(prompt("Ingrese el numero del ID"));
-					if (id > datosUsuarios.length - 1) {
-						alert(`No existen usuarios con el ID ${id}`);
+					buscarPorId();
+					if(idEncontrado ==="id inexistente"){
+						alert(`No existe en la base de datos un usuario con ese id`);
+
 					} else {
 						alert(`Se ha encontrado al usuario \n -ID ${datosUsuarios[id][0]} \n -Nombre ${datosUsuarios[id][1]} \n -Telefono ${datosUsuarios[id][2]} \n -Mail: ${datosUsuarios[id][3]}`);
 					}
-				} else {
+				    } else {
 					let valor = prompt(`Ingrese el ${dato}`);
 					let usuarioEncontrado = false;
 					let indice = 0;
@@ -84,7 +100,8 @@ while (continuar) {
 			let continuarModificando = true;
 			while (continuarModificando) {
 				idAModificar = Number(prompt("Ingrese el ID del usuario que desea modificar"));
-				if (idAModificar > datosUsuarios.length - 1) {
+				buscarPorId(idAModificar);
+				if (idEncontrado === "id inexistente") {
 					alert(`No existe un usuario con el ID ${idAModificar}`);
 				} else {
 					let nuevoNombre = prompt("Ingrese el nuevo nombre del usuario");
@@ -106,13 +123,14 @@ while (continuar) {
 			let continuarEliminando = true;
 			while (continuarEliminando) {
 				idAEliminar = Number(prompt(`Ingrese el ID del usuario que desea eliminar`));
-				if (idAEliminar > datosUsuarios.length - 1) {
+				buscarPorId(idAEliminar)
+				if (idEncontrado==="id inexistente") {
 					alert(`No existe un usuario con el ID ${idAModificar}`)
 					continuarEliminando = confirm("Desea eliminar otro usuario?");
 				} else {
 					confirmaEliminar = confirm(`Los datos del usuario que desea eliminar son: \n -ID: ${idAEliminar} \n -Nombre: ${datosUsuarios[idAEliminar][1]} \n -Telefono: ${datosUsuarios[idAEliminar][2]} \n-Email: ${datosUsuarios[idAEliminar][3]} \n Confirma la eliminacion?`);
 					if (confirmaEliminar) {
-						datosUsuarios.splice(idAEliminar - 1, 1);
+						datosUsuarios.splice(idAEliminar, 1);
 
 					} else {
 						alert(`Ha abortado la operacion`);

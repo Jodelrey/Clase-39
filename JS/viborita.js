@@ -20,7 +20,7 @@ let manzana = '🍎';
 let ladrillo = '🧱';
 let viborita = '🐍';
 let planta = '🌱';
-let poo = '💩';
+
 let mostrarMensaje = function () {
 	for (let i = 0; i < tablero.length; i++) {
 		for (j = 0; j < tablero[i].length; j++) {}
